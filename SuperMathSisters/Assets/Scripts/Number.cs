@@ -9,6 +9,7 @@ public class Number : MonoBehaviour
     public Text number;
     GameObject numObj;
     bool inCollider;
+    public int ID;
     private void Start()
     {
         inCollider = false;
@@ -20,7 +21,7 @@ public class Number : MonoBehaviour
         inCollider = param;
     }
 
-     bool getInCollider()
+    bool getInCollider()
     {
         return inCollider;
     }
@@ -29,7 +30,7 @@ public class Number : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            if (this.getInCollider() )
+            if (this.getInCollider())
             {
                 this.isPicked = !isPicked;
                 if (this.isPicked)
@@ -45,6 +46,11 @@ public class Number : MonoBehaviour
                     this.number.color = Color.white;
                 }
 
+                GameObject equation = GameObject.Find("numberHandler");
+                if (equation != null)
+                {
+                    equation.GetComponent<NumberSelection>().UpdateEquation(this.gameObject); // send the info to the equation handler
+                }
             }
 
 
@@ -52,7 +58,7 @@ public class Number : MonoBehaviour
     }
 
 
-  
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -65,8 +71,8 @@ public class Number : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {        
-           // this.inCollider = false;
+    {
+        // this.inCollider = false;
         this.setInCollider(false);
 
 
@@ -79,5 +85,9 @@ public class Number : MonoBehaviour
     void setIsPicked(bool param)
     {
         isPicked = param;
+    }
+    public int getID()
+    {
+        return ID;
     }
 }
