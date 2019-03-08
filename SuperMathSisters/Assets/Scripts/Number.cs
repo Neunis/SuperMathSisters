@@ -5,86 +5,79 @@ using UnityEngine.UI;
 
 public class Number : MonoBehaviour
 {
-    bool inCollider = false;
     bool isPicked = false;
     public Text number;
     GameObject numObj;
-
+    bool inCollider;
     private void Start()
     {
+        inCollider = false;
 
     }
 
+    void setInCollider(bool param)
+    {
+        inCollider = param;
+    }
+
+     bool getInCollider()
+    {
+        return inCollider;
+    }
     // Start is called before the first frame update
     private void Update() //fixedupdate 
     {
-       if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.KeypadEnter) && this.inCollider)
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            this.isPicked = !isPicked;
-            Debug.Log("  isPicked = true;");
-            //number = gameObject.GetComponent<Text>();
-            if (this.isPicked)
+            if (this.getInCollider() )
             {
-                //this.number.color = Color.black;
+                this.isPicked = !isPicked;
+                if (this.isPicked)
+                {
+                    //Debug.Log("  isPicked = true;");
+                    this.number.color = Color.black;
+                    this.setIsPicked(true);
+                }
+                else
+                {
+                    this.setIsPicked(false);
+                    //Debug.Log("  isPicked = false;");
+                    this.number.color = Color.white;
+                }
+
             }
-            else
-            {
-                //this.number.color = Color.white;
-            }
-
-
-
-            switch (this.gameObject.name)
-            {
-                case "collision6":
-                    numObj = GameObject.Find("Num6");
-                    numObj.GetComponent<Text>().color = Color.black;
-                    break;
-                case "collision4":
-                    numObj = GameObject.Find("Num4");
-                    numObj.GetComponent<Text>().color = Color.black;
-                    break;
-                case "collision3":
-                    numObj = GameObject.Find("Num3");
-                    numObj.GetComponent<Text>().color = Color.black;
-                    break;
-                case "collision1":
-                    numObj = GameObject.Find("Num1");
-                    numObj.GetComponent<Text>().color = Color.black;
-                    break;
-                default:
-                    Debug.Log("cant find that game object name");
-                    break;
-            }
-
-
 
 
         } // end if
     }
 
- 
 
+  
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Character") {
             Debug.Log(collision.gameObject.name + " : " + gameObject.name + " : " + Time.time);
-            this.inCollider = true;
+            //this.inCollider = true;
+            this.setInCollider(true);
         }
-        
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Character")
-        {
-            this.inCollider = false;
-        }
+    {        
+           // this.inCollider = false;
+        this.setInCollider(false);
+
+
     }
 
     public bool getIsPicked()
     {
         return this.isPicked;
+    }
+    void setIsPicked(bool param)
+    {
+        isPicked = param;
     }
 }

@@ -1618,6 +1618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: {fileID: 695382129}
+  theName: collision6
 --- !u!61 &768271455
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2262,6 +2263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: {fileID: 1351847611}
+  theName: 
 --- !u!61 &1044393761
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2333,6 +2335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: {fileID: 2066034456}
+  theName: 
 --- !u!61 &1122559477
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2908,6 +2911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: {fileID: 63043038}
+  theName: 
 --- !u!61 &1404940468
 BoxCollider2D:
   m_ObjectHideFlags: 0
