@@ -64,7 +64,7 @@ public class Character : MonoBehaviour
     //true if the player is on the ground, false otherwise.
     bool IsGrounded() // from https://kylewbanks.com/blog/unity-2d-checking-if-a-character-or-object-is-on-the-ground-using-raycasts  helps with jumping
     {
-        Debug.Log("inside  grounded function ");
+       // Debug.Log("inside  grounded function ");
 
         Vector2 position = transform.position;
         Vector2 direction = Vector2.down;
@@ -74,11 +74,11 @@ public class Character : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
         if (hit.collider != null) //If the collider is not null, that means there was an object found and we are on the ground
         {
-            Debug.Log("return true");
+          //  Debug.Log("return true");
 
             return true;
         }
-        Debug.Log("return false");
+        //Debug.Log("return false");
         Debug.DrawRay(position, direction, Color.green, 5.0f);
 
         return false;
