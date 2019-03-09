@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//this script handles the number and selection of the number
 public class Number : MonoBehaviour
 {
     bool isPicked = false;
     public Text number;
     GameObject numObj;
     bool inCollider;
-    public int ID;
+    public string ID;
     private void Start()
     {
         inCollider = false;
 
     }
-
+    
     void setInCollider(bool param)
     {
         inCollider = param;
@@ -26,9 +27,10 @@ public class Number : MonoBehaviour
         return inCollider;
     }
     // Start is called before the first frame update
+    //handles the logic for when the character is above the number, selects the number, and the number changes color. calls the equation checker when a number is selected or deselected
     private void Update() //fixedupdate 
     {
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
         {
             if (this.getInCollider())
             {
@@ -63,7 +65,7 @@ public class Number : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Character") {
-            Debug.Log(collision.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+            //Debug.Log(collision.gameObject.name + " : " + gameObject.name + " : " + Time.time);
             //this.inCollider = true;
             this.setInCollider(true);
         }
@@ -86,7 +88,7 @@ public class Number : MonoBehaviour
     {
         isPicked = param;
     }
-    public int getID()
+    public string getID()
     {
         return ID;
     }

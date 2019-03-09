@@ -6,7 +6,7 @@ public class GM : MonoBehaviour
 {
     public GameObject Menu;
     public GameObject character;
-
+    bool didWinGame = false; // this flag is to know if the player won the game
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,12 @@ public class GM : MonoBehaviour
                 character.SetActive(false);
             }
         }
+
+        if (didWinGame)
+        {
+            Debug.Log("YOU WIN!");
+
+        }
     }
 
    public void Resume()
@@ -46,5 +52,10 @@ public class GM : MonoBehaviour
     public void MainMenu()
     {
 
+    }
+
+    public void setDidWinGame(bool param)
+    {
+        didWinGame = param;
     }
 }

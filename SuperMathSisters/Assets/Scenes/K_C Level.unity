@@ -507,10 +507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970f85d03fb8ad94b9c4614931d3ee23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  num6Collider: {fileID: 768271452}
-  num3Collider: {fileID: 1122559474}
-  num4Collider: {fileID: 1404940465}
-  num1Collider: {fileID: 1044393758}
+  left: {fileID: 172014049}
+  right: {fileID: 396496093}
+  GM: {fileID: 704131169}
+  waitTimeForEquation: 2
 --- !u!4 &160679759
 Transform:
   m_ObjectHideFlags: 0
@@ -1618,7 +1618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: {fileID: 695382129}
-  theName: collision6
+  ID: 6
 --- !u!61 &768271455
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2263,7 +2263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: {fileID: 1351847611}
-  theName: 
+  ID: 1
 --- !u!61 &1044393761
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2335,7 +2335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: {fileID: 2066034456}
-  theName: 
+  ID: 3
 --- !u!61 &1122559477
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2911,7 +2911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: {fileID: 63043038}
-  theName: 
+  ID: 4
 --- !u!61 &1404940468
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3765,7 +3765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682519765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.55, y: 3.37, z: 0}
+  m_LocalPosition: {x: -7.56, y: -2.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 822197353}

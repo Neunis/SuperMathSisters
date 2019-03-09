@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//using UnityStandardAssets.CrossPlatformInput;
-
+//this class handles the movement of the character
 public class Character : MonoBehaviour
 {
-    public LayerMask groundLayer; //used to see if the player is on the ground or not
-    
+  
+    public LayerMask groundLayer; //used to see if the player is on the ground or not    
     float moveHorzontal = 0f;
     public float moveSpeed = 0.5f; //the speed of character movement
     public Vector2 jumpHeight; //the height of the jump
@@ -41,13 +40,13 @@ public class Character : MonoBehaviour
     //move our character
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
            // Debug.Log("left arrow");
             transform.position += Vector3.right * -moveSpeed * Time.deltaTime;
 
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             //Debug.Log("right arrow");
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
