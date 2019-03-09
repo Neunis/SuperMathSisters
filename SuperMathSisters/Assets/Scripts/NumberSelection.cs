@@ -43,6 +43,9 @@ public class NumberSelection : MonoBehaviour
         yield return new WaitForSeconds(waitTimeForEquation);
         //print(Time.time);
     }
+   
+
+
     //need to send this function object to update array if there is a spot avail
     public void UpdateEquation(GameObject number)
     {

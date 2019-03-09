@@ -14,6 +14,8 @@ public class GM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked; //hide the mouse
+        Cursor.visible = false;
         Menu.SetActive(false);
     }
 

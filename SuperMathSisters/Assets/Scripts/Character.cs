@@ -78,7 +78,7 @@ public class Character : MonoBehaviour
             return true;
         }
         //Debug.Log("return false");
-        Debug.DrawRay(position, direction, Color.green, 5.0f);
+        //Debug.DrawRay(position, direction, Color.green, 5.0f);
 
         return false;
     }
