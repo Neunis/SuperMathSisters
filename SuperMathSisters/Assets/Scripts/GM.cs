@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GM : MonoBehaviour
 {
     public GameObject Menu;
     public GameObject character;
+    public GameObject restartMenu;
     bool didWinGame = false; // this flag is to know if the player won the game
 
     // Start is called before the first frame update
@@ -34,6 +37,7 @@ public class GM : MonoBehaviour
         if (didWinGame)
         {
             Debug.Log("YOU WIN!");
+            this.endLevelMenuPopUp("Well Done!");
 
         }
     }
@@ -49,13 +53,40 @@ public class GM : MonoBehaviour
 
     }
 
-    public void MainMenu()
-    {
-
-    }
 
     public void setDidWinGame(bool param)
     {
         didWinGame = param;
+    }
+
+    public void endLevelMenuPopUp(string title)
+    {
+        restartMenu.SetActive(true);
+        character.SetActive(false);
+
+        GameObject popUp = GameObject.Find("winOrLoseText");
+        if (popUp != null)
+        {
+            popUp.GetComponent<Text>().text = title;
+
+        }
+
+    }
+
+    public void playNextLevel(string LevelName) //have the button call this function with the name level string
+    {
+        SceneManager.LoadScene(LevelName);
+    }
+
+    public void returnToMainMenu()
+    {
+        SceneManager.LoadScene("Main_Level");
+
+    }
+
+    public void restartLevel()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
