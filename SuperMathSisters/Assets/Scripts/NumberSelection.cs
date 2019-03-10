@@ -44,7 +44,26 @@ public class NumberSelection : MonoBehaviour
         //print(Time.time);
     }
    
-
+    public bool isEquationFull()
+    {
+        int count = 0;
+        for (int i = 0; i < numbers.Count; i++ )
+        {
+            if (numbers[i] != null)
+            {
+                count++;
+            }
+        }
+        Debug.Log(" the count is " + count);
+        if (count == 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     //need to send this function object to update array if there is a spot avail
     public void UpdateEquation(GameObject number)

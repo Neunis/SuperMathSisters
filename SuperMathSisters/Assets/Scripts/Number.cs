@@ -12,6 +12,7 @@ public class Number : MonoBehaviour
     bool inCollider;
     public string ID;
     int numbersListSize;
+    bool flag;
     private void Start()
     {
         inCollider = false;
@@ -40,16 +41,20 @@ public class Number : MonoBehaviour
                 GameObject equation = GameObject.Find("numberHandler");
                 if (equation != null)
                 {
+                    flag = equation.GetComponent<NumberSelection>().isEquationFull();
                     equation.GetComponent<NumberSelection>().UpdateEquation(this.gameObject); // send the info to the equation handler
+                    
                 }
                 //Debug.Log("numbersListSize " + numbersListSize);
 
                     if (this.isPicked)
                     {
-                        //Debug.Log("  isPicked = true;");
+                    Debug.Log(equation.GetComponent<NumberSelection>().isEquationFull());
+                        if (!flag) // not full change number color 
+                        {
                         this.number.color = Color.black;
                         this.setIsPicked(true);
-                         
+                         }
                     }
                     else
                     {
