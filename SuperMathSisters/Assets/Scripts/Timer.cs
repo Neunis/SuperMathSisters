@@ -7,8 +7,9 @@ public class Timer : MonoBehaviour
 {
     public Text timerText;
     private float startTime;
+    private float endTime;
     //currently set to 10 seconds for testing purposes
-    public static float timeLeft = 10f;
+    public static float timeLeft = 30f;
     private bool completed = false;
 
     // Start is called before the first frame update
@@ -44,10 +45,10 @@ public class Timer : MonoBehaviour
 
     }
 
-    public void endResult()
+    public void EndResult()
     {
         completed = true;
-        timerText.color = Color.red;
+        timerText.color = Color.yellow;
 
     }
 }

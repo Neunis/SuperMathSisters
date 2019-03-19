@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Treasure : MonoBehaviour
 {
-    public GameObject CorrectAnswerBox;
+    private GameObject CorrectAnswerBox;
     //once char collides with the correct object the program will send
     //a message to the game to change its false var to true
     private void OnTriggerEnter(Collider other)

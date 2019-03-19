@@ -995,6 +995,7 @@ GameObject:
   - component: {fileID: 361862954}
   - component: {fileID: 361862955}
   - component: {fileID: 361862956}
+  - component: {fileID: 361862957}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -1081,6 +1082,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
+--- !u!136 &361862957
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361862953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.645
+  m_Height: 1.29
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &403425359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,6 +2005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c0dd29ba8aed94294d41a8fd6de69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CorrectAnswerBox: {fileID: 717582602}
 --- !u!65 &717582606
 BoxCollider:
   m_ObjectHideFlags: 0
