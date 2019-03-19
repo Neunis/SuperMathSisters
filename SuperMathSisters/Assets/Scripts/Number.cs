@@ -75,7 +75,7 @@ public class Number : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Character") {
+        if (collision.gameObject.name == "Character") { // checks to make sure the that critter is colliding
             //Debug.Log(collision.gameObject.name + " : " + gameObject.name + " : " + Time.time);
             //this.inCollider = true;
             this.setInCollider(true);

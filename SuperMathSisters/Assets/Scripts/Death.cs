@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
+    //this script handles the collider functionality for falling to your death in the level. just calls the GM to tell the game to end.
     public GameObject GM;
     // Start is called before the first frame update
     void Start()

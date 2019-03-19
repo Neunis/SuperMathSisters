@@ -11,11 +11,12 @@ public class Character : MonoBehaviour
     float moveHorzontal = 0f;
     public float moveSpeed = 0.5f; //the speed of character movement
     public Vector2 jumpHeight; //the height of the jump
+    private bool facingRight; //for the character to see if they are facing right
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        facingRight = true;
     }
 
     // Update is called once per frame
@@ -58,9 +59,12 @@ public class Character : MonoBehaviour
 
         }
 
+        float horzontalValue = Input.GetAxis("Horizontal"); // handles flipping the critter
+        this.flip(horzontalValue);
+
     }
 
-    //true if the player is on the ground, false otherwise.
+    //true if the player is on the ground, false otherwise. only allow the character to do a single jump in the game
     bool IsGrounded() // from https://kylewbanks.com/blog/unity-2d-checking-if-a-character-or-object-is-on-the-ground-using-raycasts  helps with jumping
     {
        // Debug.Log("inside  grounded function ");
@@ -81,5 +85,16 @@ public class Character : MonoBehaviour
         //Debug.DrawRay(position, direction, Color.green, 5.0f);
 
         return false;
+    }
+
+    private void flip(float horizontal) // from https://www.youtube.com/watch?v=FHQyPgccD4M
+    {
+        if (horizontal > 0 &&!facingRight || horizontal < 0 && facingRight)
+        {
+            facingRight = !facingRight;
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
     }
 }

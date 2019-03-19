@@ -24,7 +24,7 @@ public class GameControlla : MonoBehaviour
         }
     }
 
-    public void restartScreen()
+    public void restartScreen() // what is this function for -k
     {
         timeLeft.gameObject.SetActive(false);
         //restart load screen appears

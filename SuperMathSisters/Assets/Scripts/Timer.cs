@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Timer : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timerText = GetComponent<Text>();
+        //timerText = GetComponent<Text>(); // this line was cause a null reference see https://answers.unity.com/questions/1352355/null-reference-exception-to-a-non-null-text-object.html
         startTime = Time.time;
     }
 
@@ -33,15 +34,29 @@ public class Timer : MonoBehaviour
         //f2 within () just defines that only 2 decimals will be shown as a float
         string seconds = (t % 60).ToString("f2");
 
-        timerText.text = minutes + ":" + seconds;
+        if (timerText != null) { // check to see if the object is null or not
+            if (Convert.ToInt32(minutes) > 1.0 ) // if there is minute in the timer, then display it otherwise dont
+            {
+                timerText.text = minutes + ":" + seconds;
 
-       /* timeLeft -= Time.deltaTime;
-        if (timeLeft < 0)
-        {
-            timeLeft = 0;
-            timerText.text = "Time Left: " + Mathf.Round(timeLeft);
+            }
+            else
+            {
+                timerText.text = seconds;
+
+            }
         }
-        */
+        else
+        {
+            Debug.Log("Timer is null");
+        }
+        /* timeLeft -= Time.deltaTime;
+         if (timeLeft < 0)
+         {
+             timeLeft = 0;
+             timerText.text = "Time Left: " + Mathf.Round(timeLeft);
+         }
+         */
 
     }
 
@@ -50,5 +65,10 @@ public class Timer : MonoBehaviour
         completed = true;
         timerText.color = Color.yellow;
 
+    }
+
+    public bool GetCompleted() // I use this function to get the status the timer. if true then the time is up was my understanding. 
+    {
+        return completed;
     }
 }

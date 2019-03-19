@@ -9,6 +9,7 @@ public class GM : MonoBehaviour
     public GameObject Menu;
     public GameObject character;
     public GameObject restartMenu;
+    public GameObject TimerObject;
     bool didWinGame = false; // this flag is to know if the player won the game
 
     // Start is called before the first frame update
@@ -42,6 +43,12 @@ public class GM : MonoBehaviour
             this.endLevelMenuPopUp("Well Done!");
 
         }
+
+        if (TimerObject.GetComponent<Timer>().GetCompleted())// the timer is up and the game is done. 
+        {
+            this.endLevelMenuPopUp("Try Again!");
+
+        }
     }
 
    public void Resume()
@@ -61,7 +68,7 @@ public class GM : MonoBehaviour
         didWinGame = param;
     }
 
-    public void endLevelMenuPopUp(string title)
+    public void endLevelMenuPopUp(string title) // pass in the text to display to user, Try Again or Well Done! call this function to make the game end and present to the user their choices
     {
         restartMenu.SetActive(true);
         character.SetActive(false);
@@ -80,13 +87,13 @@ public class GM : MonoBehaviour
         SceneManager.LoadScene(LevelName);
     }
 
-    public void returnToMainMenu()
+    public void returnToMainMenu() // called when the main menu is clicked
     {
         SceneManager.LoadScene("Main_Level");
 
     }
 
-    public void restartLevel()
+    public void restartLevel() // called when the restart button the menu is clicked
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);

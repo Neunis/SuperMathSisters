@@ -31,8 +31,14 @@ public class NumberSelection : MonoBehaviour
             int num1 = int.Parse(numbers[1].GetComponent<Number>().getID());
 
             StartCoroutine(waitForASec());
-            if (num0 + num1 == answer) {
+            if (num0 + num1 == answer) { // the player chose the right answer and won!
                 GM.GetComponent<GM>().setDidWinGame(true);
+            }
+            else // the player did not chose correct numbers and are wrong
+            {
+                //GM.GetComponent<GM>().endLevelMenuPopUp(num0.ToString() + " + " + num1.ToString() + "\n does not equal "+answer.ToString() + "\n Try Again!");// over flows too much
+                GM.GetComponent<GM>().endLevelMenuPopUp("Try Again!");
+
             }
 
         }
