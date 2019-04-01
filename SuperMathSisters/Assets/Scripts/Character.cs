@@ -12,11 +12,13 @@ public class Character : MonoBehaviour
     public float moveSpeed = 0.5f; //the speed of character movement
     public Vector2 jumpHeight; //the height of the jump
     private bool facingRight; //for the character to see if they are facing right
+    AudioSource audioData;
 
     // Start is called before the first frame update
     void Start()
     {
         facingRight = true;
+        audioData = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,9 +33,11 @@ public class Character : MonoBehaviour
             {
                 return;
             }
-            else
+            else //jump!
             {
+                audioData.Play(0);
                 GetComponent<Rigidbody2D>().AddForce(jumpHeight, ForceMode2D.Impulse);
+
             }
         }
     }
