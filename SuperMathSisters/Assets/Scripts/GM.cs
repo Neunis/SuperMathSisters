@@ -15,9 +15,9 @@ public class GM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; //hide the mouse
-        Cursor.visible = false;
-        Menu.SetActive(false);
+        //Cursor.lockState = CursorLockMode.Locked; //hide the mouse
+       // Cursor.visible = false;
+        //Menu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,13 +25,15 @@ public class GM : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Menu.activeInHierarchy == true)
+            if (Menu.activeInHierarchy == true) // the menu is not there
             {
+                TimerObject.GetComponent<Timer>().SetPaused(false);
                 Menu.SetActive(false);
                 character.SetActive(true);
             }
-            else
+            else // menu is there
             {
+                TimerObject.GetComponent<Timer>().SetPaused(true);
                 Menu.SetActive(true);
                 character.SetActive(false);
             }
@@ -47,7 +49,7 @@ public class GM : MonoBehaviour
         if (TimerObject.GetComponent<Timer>().GetCompleted())// the timer is up and the game is done. 
         {
             this.endLevelMenuPopUp("Try Again!");
-
+            //Debug.Log("TIMER ENDED");
         }
     }
 
