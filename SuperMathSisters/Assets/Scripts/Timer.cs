@@ -28,6 +28,7 @@ public class Timer : MonoBehaviour
             currentTime -= 1 * Time.deltaTime;
             countdownTxt.text = currentTime.ToString("0");
         }
+
         if (currentTime >= 10)
         {
             countdownTxt.color = Color.black;
