@@ -16,6 +16,8 @@ public class ChestAnswers : MonoBehaviour
         ChestAnswer = GetComponent<Button>();
     }
 
+    bool chosen;
+
     void Update()
     {
         if (Input.GetKeyDown(Key))
@@ -30,8 +32,8 @@ public class ChestAnswers : MonoBehaviour
         }
     }
 
-    //usability feature that outlines selection for user respectively
 
+    //usability feature that outlines selection for user respectively
     void OutlineColorSelection(Color color)
     {
         Graphic graphic = GetComponent<Graphic>();
