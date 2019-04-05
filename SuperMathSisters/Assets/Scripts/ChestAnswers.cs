@@ -16,11 +16,11 @@ public class ChestAnswers : MonoBehaviour
         ChestAnswer = GetComponent<Button>();
     }
 
-    bool chosen;
+    bool chosen = false;
 
     void Update()
     {
-        if (Input.GetKeyDown(Key))
+        if (Input.GetKeyDown(Key) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
         {
             OutlineColorSelection(ChestAnswer.colors.pressedColor);
             ChestAnswer.onClick.Invoke();
