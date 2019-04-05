@@ -23,7 +23,6 @@ public class ChestAnswers : MonoBehaviour
         if (Input.GetKeyDown(Key))
         {
             OutlineColorSelection(ChestAnswer.colors.pressedColor);
-            //Click the button
             ChestAnswer.onClick.Invoke();
         }
         else if (Input.GetKeyUp(Key))
