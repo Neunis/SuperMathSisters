@@ -100,4 +100,13 @@ public class GM : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
+
+    public void QuitGame()
+    {
+        //tester to see if game quits since application.quit only fxns once built
+        //for unity editor testing purposes
+        //TODO:DELETE ONCE COMPLETED
+        Debug.Log("Game Quitting");
+        Application.Quit();
+    }
 }
