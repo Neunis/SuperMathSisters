@@ -20,15 +20,13 @@ public class ChestAnswers : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(Key) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
         {
             OutlineColorSelection(ChestAnswer.colors.pressedColor);
-            ChestAnswer.onClick.Invoke();
+           //ChestAnswer.onClick.Invoke();
         }
-        else if (Input.GetKeyUp(Key))
-        {
             OutlineColorSelection(ChestAnswer.colors.normalColor);
-        }
+     
     }
 
 
