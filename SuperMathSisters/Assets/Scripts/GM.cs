@@ -113,7 +113,7 @@ public class GM : MonoBehaviour
         //tester to see if game quits since application.quit only fxns once built
         //for unity editor testing purposes
         //TODO:DELETE ONCE COMPLETED
-        Debug.Log("Game Quitting");
+        //Debug.Log("Game Quitting");
         Application.Quit();
     }
 }
