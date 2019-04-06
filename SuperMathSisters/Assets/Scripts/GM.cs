@@ -94,6 +94,7 @@ public class GM : MonoBehaviour
         Menu.SetActive(false);
         character.SetActive(true);
         ShowTimer.SetActive(true);
+        TimerObject.GetComponent<Timer>().SetPaused(false);
     }
 
     public void Instructions()
