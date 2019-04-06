@@ -22,5 +22,7 @@ public class Death : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GM.GetComponent<GM>().endLevelMenuPopUp("Try Again!");
+        GM.GetComponent<GM>().PauseTimerFromGM();
+
     }
 }

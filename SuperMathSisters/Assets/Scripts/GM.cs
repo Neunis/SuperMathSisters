@@ -43,6 +43,8 @@ public class GM : MonoBehaviour
         {
             Debug.Log("YOU WIN!");
             this.endLevelMenuPopUp("Well Done!");
+            //need to stop timer
+            TimerObject.GetComponent<Timer>().SetPaused(true);
 
         }
 
@@ -53,7 +55,12 @@ public class GM : MonoBehaviour
         }
     }
 
-   public void Resume()
+    public void PauseTimerFromGM()
+    {
+        TimerObject.GetComponent<Timer>().SetPaused(true);
+    }
+
+    public void Resume()
     {
         Menu.SetActive(false);
         character.SetActive(true);
