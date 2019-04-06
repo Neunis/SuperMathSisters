@@ -6,28 +6,58 @@ using UnityEngine.UI;
 public class ChestAnswers : MonoBehaviour
 {
     //private var created to connect keycode and button
-    private Button CorrectChestAnswer;
-    private Button WrongChestAnswer;
+   // private Button CorrectChestAnswer;
+    //private Button WrongChestAnswer;
+    private Button chest;
+    string answer = "1";
+    bool inCollider;
+    public GameObject GM;
 
     //private reference to UI button
     void Awake()
     {
-        CorrectChestAnswer = GetComponent<Button>();
-        WrongChestAnswer = GetComponent<Button>();
+        //CorrectChestAnswer = GetComponent<Button>();
+        //WrongChestAnswer = GetComponent<Button>();
+        chest = GetComponent<Button>();
+        inCollider = false;
+
     }
 
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    OutlineColorSelection(CorrectChestAnswer.colors.pressedColor);
+
+        //}
+        //else
+        //{
+        //    OutlineColorSelection(CorrectChestAnswer.colors.normalColor);
+        //} 
+
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
         {
-            OutlineColorSelection(CorrectChestAnswer.colors.pressedColor);
-            
-        }
-        else
-        {
-            OutlineColorSelection(CorrectChestAnswer.colors.normalColor);
-        }
+            //Debug.Log("You have pressed a selection key this.getInCollider() =  " + this.getInCollider());
+            if (this.getInCollider())
+            {
+                //Debug.Log(" if (this.getInCollider())  : " + gameObject.name + " : " + Time.time);
+                OutlineColorSelection(chest.colors.pressedColor);
+                if (gameObject.name.Equals(answer))
+                {
+                    //Debug.Log("you win!");
+                    GM.GetComponent<GM>().setDidWinGame(true);
 
+                }
+                else
+                {
+                   // Debug.Log("you lost");
+                    GM.GetComponent<GM>().endLevelMenuPopUp("Try Again!");
+                    GM.GetComponent<GM>().PauseTimerFromGM();
+
+                }
+
+            }
+        }
     }
 
 
@@ -37,7 +67,40 @@ public class ChestAnswers : MonoBehaviour
     void OutlineColorSelection(Color color)
     {
         Graphic graphic = GetComponent<Graphic>();
-        graphic.CrossFadeColor(color, CorrectChestAnswer.colors.fadeDuration, true, true);
+        graphic.CrossFadeColor(color, chest.colors.fadeDuration, true, true);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Character")
+        { // checks to make sure the that critter is colliding
+            //Debug.Log("OnTriggerEnter "+collision.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+            //this.inCollider = true;
+            this.setInCollider(true);
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //Debug.Log("OnTriggerExit2D " + collision.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+
+        // this.inCollider = false;
+        this.setInCollider(false);
+
+
+    }
+
+    void setInCollider(bool param)
+    {
+        //Debug.Log("setINCollider param = " + param);
+        inCollider = param;
+    }
+
+    bool getInCollider()
+    {
+        return inCollider;
     }
 }
 
