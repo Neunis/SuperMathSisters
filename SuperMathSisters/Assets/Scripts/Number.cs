@@ -8,17 +8,21 @@ public class Number : MonoBehaviour
 {
     bool isPicked = false;
     public Text number;
+    public AudioClip select;
     GameObject numObj;
     bool inCollider;
     public string ID;
     int numbersListSize;
     bool flag;
+    AudioSource audioSource;
+
     private void Start()
     {
         inCollider = false;
+        audioSource = GetComponent<AudioSource>();
 
     }
-    
+
     void setInCollider(bool param)
     {
         inCollider = param;
@@ -37,6 +41,7 @@ public class Number : MonoBehaviour
         {
             if (this.getInCollider())
             {
+                audioSource.PlayOneShot(select, 0.7F);
                 this.isPicked = !isPicked;
                 GameObject equation = GameObject.Find("numberHandler");
                 if (equation != null)

@@ -10,14 +10,25 @@ public class GM : MonoBehaviour
     public GameObject character;
     public GameObject restartMenu;
     public GameObject TimerObject;
+    public AudioClip pauseOn;
+    public AudioClip pauseOff;
+    public AudioClip lost;
+    public AudioClip win;
+    bool haventPlayedWinSound;
+    bool haventPlayedLostSound;
+
+    AudioSource audioSource;
     bool didWinGame = false; // this flag is to know if the player won the game
 
     // Start is called before the first frame update
     void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked; //hide the mouse
-       // Cursor.visible = false;
+        // Cursor.visible = false;
         //Menu.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        haventPlayedWinSound = true;
+        haventPlayedLostSound = true;
     }
 
     // Update is called once per frame
@@ -30,18 +41,20 @@ public class GM : MonoBehaviour
                 TimerObject.GetComponent<Timer>().SetPaused(false);
                 Menu.SetActive(false);
                 character.SetActive(true);
+                audioSource.PlayOneShot(pauseOff, 0.7F);
             }
             else // menu is there
             {
                 TimerObject.GetComponent<Timer>().SetPaused(true);
                 Menu.SetActive(true);
                 character.SetActive(false);
+                audioSource.PlayOneShot(pauseOn, 0.7F);
             }
         }
 
         if (didWinGame)
         {
-            Debug.Log("YOU WIN!");
+            //Debug.Log("YOU WIN!");
             this.endLevelMenuPopUp("Well Done!");
             //need to stop timer
             TimerObject.GetComponent<Timer>().SetPaused(true);
@@ -86,7 +99,24 @@ public class GM : MonoBehaviour
         if (popUp != null)
         {
             popUp.GetComponent<Text>().text = title;
-
+            if(title.Equals("Try Again!"))
+            {
+                audioSource.clip = lost;
+                if (!audioSource.isPlaying && haventPlayedLostSound)
+                {
+                    audioSource.PlayOneShot(lost, 0.7F);
+                    haventPlayedLostSound = false; //make sure the sound only plays once
+                }
+            }
+            else
+            {
+                audioSource.clip = win;
+                if (!audioSource.isPlaying && haventPlayedWinSound)
+                {
+                    audioSource.PlayOneShot(win, 0.7F);
+                    haventPlayedWinSound = false; //make sure the sound only plays once
+                }
+            }
         }
 
     }
