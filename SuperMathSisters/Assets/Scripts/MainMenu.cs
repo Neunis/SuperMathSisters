@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
     {
         audioSource.Play();
         //audioSource.PlayOneShot(select, 0.7F);
-        yield return new WaitForSeconds(audioSource.clip.length);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

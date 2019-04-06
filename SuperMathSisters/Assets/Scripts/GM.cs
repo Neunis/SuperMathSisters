@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class GM : MonoBehaviour
 {
     public GameObject Menu;
+    public GameObject ShowInstructions;
+    public GameObject ShowTimer;
+    public GameObject nums;
     public GameObject character;
     public GameObject restartMenu;
     public GameObject TimerObject;
@@ -16,6 +19,8 @@ public class GM : MonoBehaviour
     public AudioClip win;
     bool haventPlayedWinSound;
     bool haventPlayedLostSound;
+    public AudioClip selectMenuSound;
+
 
     AudioSource audioSource;
     bool didWinGame = false; // this flag is to know if the player won the game
@@ -36,15 +41,24 @@ public class GM : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (ShowInstructions.activeInHierarchy == true)
+            {
+                Menu.SetActive(false);
+                ShowInstructions.SetActive(false);
+
+            }
             if (Menu.activeInHierarchy == true) // the menu is not there
             {
                 TimerObject.GetComponent<Timer>().SetPaused(false);
                 Menu.SetActive(false);
+                ShowInstructions.SetActive(false);
                 character.SetActive(true);
                 audioSource.PlayOneShot(pauseOff, 0.7F);
+                nums.SetActive(true);
             }
             else // menu is there
             {
+                ShowTimer.SetActive(true);
                 TimerObject.GetComponent<Timer>().SetPaused(true);
                 Menu.SetActive(true);
                 character.SetActive(false);
@@ -75,12 +89,16 @@ public class GM : MonoBehaviour
 
     public void Resume()
     {
+        nums.SetActive(true);
+        audioSource.PlayOneShot(selectMenuSound, 0.7F);
         Menu.SetActive(false);
         character.SetActive(true);
+        ShowTimer.SetActive(true);
     }
 
     public void Instructions()
     {
+        audioSource.PlayOneShot(selectMenuSound, 0.7F);
 
     }
 
@@ -123,19 +141,27 @@ public class GM : MonoBehaviour
 
     public void playNextLevel(string LevelName) //have the button call this function with the name level string
     {
+        StartCoroutine(playNextLevelSound(LevelName));
+    }
+
+    IEnumerator playNextLevelSound(string LevelName)
+    {
+        //Debug.Log("playNextLevelSound");
+        audioSource.PlayOneShot(selectMenuSound, 0.7F);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(LevelName);
     }
 
     public void returnToMainMenu() // called when the main menu is clicked
     {
-        SceneManager.LoadScene("Main_Level");
-
+        StartCoroutine(playNextLevelSound("Main_Level"));
     }
 
     public void restartLevel() // called when the restart button the menu is clicked
     {
         Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        string currentLevelName = scene.name;
+        StartCoroutine(playNextLevelSound(currentLevelName));
     }
 
     public void QuitGame()
@@ -144,6 +170,9 @@ public class GM : MonoBehaviour
         //for unity editor testing purposes
         //TODO:DELETE ONCE COMPLETED
         //Debug.Log("Game Quitting");
+        audioSource.PlayOneShot(selectMenuSound, 0.7F);
         Application.Quit();
     }
+
+
 }
