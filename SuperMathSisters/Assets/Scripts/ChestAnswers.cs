@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class ChestAnswers : MonoBehaviour
 {
-    //private var created to connect keycode and button
-   // private Button CorrectChestAnswer;
-    //private Button WrongChestAnswer;
     private Button chest;
     string answer = "1";
     bool inCollider;
@@ -16,8 +13,6 @@ public class ChestAnswers : MonoBehaviour
     //private reference to UI button
     void Awake()
     {
-        //CorrectChestAnswer = GetComponent<Button>();
-        //WrongChestAnswer = GetComponent<Button>();
         chest = GetComponent<Button>();
         inCollider = false;
 
@@ -25,16 +20,6 @@ public class ChestAnswers : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
-        //{
-        //    OutlineColorSelection(CorrectChestAnswer.colors.pressedColor);
-
-        //}
-        //else
-        //{
-        //    OutlineColorSelection(CorrectChestAnswer.colors.normalColor);
-        //} 
-
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
         {
             //Debug.Log("You have pressed a selection key this.getInCollider() =  " + this.getInCollider());
@@ -60,8 +45,6 @@ public class ChestAnswers : MonoBehaviour
         }
     }
 
-
-    //Start Couroutine();
 
     //usability feature that outlines selection for user respectively
     void OutlineColorSelection(Color color)
