@@ -1,13 +1,13 @@
 # SuperMathSisters
 An Mario inspired educational math game meant to teach basic arithmetic like addition for children to practice and play in a fun way.
-- <img src= "critterl1.jpg width=200><br>
-- <img src= "critterl2.jpg width=200><br>
+- <img src=critterl1.png width=200><br>
+- <img src=critterl2.png width=200><br>
 
 # Use of Production Evaluated
 - Avatar/Critter movement around the WASD and arrow keys for avatar movement. Spacebar to make the avatar jump 
 - Selection of numbers done through Enter key or E key
 - Automation equation checker
-- <img src= "critterspacebar.png width=200><br>
+- <img src=critterspacebar.png width=200><br>
   
 # Researh Questions
 Can we establish an easy to use product, so we asked the below questions:
