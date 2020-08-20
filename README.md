@@ -1,5 +1,5 @@
 # SuperMathSisters
-An Mario inspired educational math game meant to teach basic arithmetic like addition for children to practice and play in a fun way.
+An Mario inspired educational math game meant to teach basic arithmetic like addition for children to practice and play in a fun way. <br>
 <img src=critterl1.png width=200>
 <img src=critterl2.png width=200><br>
 
