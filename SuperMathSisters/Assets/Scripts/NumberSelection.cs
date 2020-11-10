@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityScript.Lang;
 
 // this script handles the equation checker and to see if the numbers equal the answer, removing and adding in the number when selected or deselected
 public class NumberSelection : MonoBehaviour
